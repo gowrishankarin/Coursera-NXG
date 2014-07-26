@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Coursera Dashboard by Gowri Shankar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet"> 
+     <link href="./home/css/home.css" rel="stylesheet"> 
+     <link rel="stylesheet" type="text/css" href="./home/css/style.css">
+
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+
+
+    </style>
+    <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.io/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="http://twitter.github.io/bootstrap/assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header btn-success">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Quiz Status: <strong>Completed</strong></h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Due Date </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Hard Deadline </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Effective Score </strong> 13/13</p>
+    <p><strong># of Attempt </strong> 5/10</p>
+    <p><strong>Last Attempted </strong> Sat 12 Jan 2013 4:25 PM IST +0530</p>
+    <p><strong>Last Attempted Score </strong> 13/13</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success">Attempt Again</button>
+  </div>
+</div>
+
+
+
+
+    <div id="noAttempt" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class=" btn-inverse modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Quiz Status: <strong>Failed to Attempt</strong></h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Due Date </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Hard Deadline </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Effective Score </strong> 0/13</p>
+    <p><strong># of Attempt </strong> 0/10</p>
+    <p><strong>Last Attempted </strong> Sat 12 Jan 2013 4:25 PM IST +0530</p>
+    <p><strong>Last Attempted Score </strong> 0/13</p>
+  </div>
+  <div class="modal-footer">
+    <p><strong>Sorry!! You have missed the deadline </strong></p>
+  </div>
+</div>
+
+    <div id="quizOpen" class="modal hide fade dialog_text" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="btn-primary modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Quiz Status: <strong>Yet to attempt this quiz!!!</strong></h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Due Date </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Hard Deadline </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Effective Score </strong> 0/13</p>
+    <p><strong># of Attempt </strong> 0/10</p>
+    <p><strong>Last Attempted </strong> Sat 12 Jan 2013 4:25 PM IST +0530</p>
+    <p><strong>Last Attempted Score </strong> 0/13</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary">Attempt</button>
+  </div>
+</div>
+
+    <div id="quizNotOpen" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="btn-info modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Quiz Status: <strong>Quiz Not Opened</strong></h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Week 5 Assignment/Quiz </strong></p>
+    <p><strong>Scheduled Open </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+  </div>
+  <div class="modal-footer">
+    <p><strong>This quiz is not yet opened!!! </strong></p>
+  </div>
+</div>
+
+
+   <div id="failedQuiz" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="btn-danger modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Quiz Status: <strong>Failed to Clear</strong></h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Due Date </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Hard Deadline </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Effective Score </strong> 3/13</p>
+    <p><strong># of Attempt </strong> 8/10</p>
+    <p><strong>Last Attempted </strong> Sat 12 Jan 2013 4:25 PM IST +0530</p>
+    <p><strong>Last Attempted Score </strong> 3/13</p>
+  </div>
+  <div class="modal-footer">
+    <p><strong>Sorry!!! You failed to clear this quiz.</strong></p>
+  </div>
+</div>
+
+   <div id="deadlineNearing" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="btn-warning modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Quiz Status: <strong>Deadline Approaching</strong></h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Due Date </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Hard Deadline </strong> Mon 14 Jan 2013 6:30 PM IST +0530</p>
+    <p><strong>Effective Score </strong> 0/13</p>
+    <p><strong># of Attempt </strong> 0/10</p>
+    <p><strong>Last Attempted </strong> Sat 12 Jan 2013 4:25 PM IST +0530</p>
+    <p><strong>Last Attempted Score </strong> 0/13</p>
+  </div>
+  <div class="modal-footer">
+    <p class="pull-left"><strong>Deadline is approaching shortly!!!</strong></p>
+    <button class="btn btn-warning">Attempt</button>
+  </div>
+</div>
+
+
+<div id="forum" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <img src="./home/img/rosa.png" class="bg_img" alt="Smiley face"></img>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">message from <span style="color:crimson">Rose Dumbledore</span></h3>
+  </div>
+  <div class="modal-body message_block">
+  
+    
+    <p class="pull-left" style="color:#444">I am currently in Paris for the CHI conference. Yesterday, I held office hours and had the incredible opportunity to chat with students from Europe about their experiences in the course so far.</p>
+    
+  </div>
+
+  
+
+  <div class="modal-footer">
+    <p class="pull-left"> Mon 14 Apr 2013 6:30 PM IST +0530</p>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+
+
+<div id="notification" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <img src="./home/img/gary.jpeg" class="bg_img" alt="Smiley face"></img>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="myModalLabel">Scott Mason Shankar</h4>
+  </div>
+  <div class="modal-body">
+    
+    <p>Software Professional with 12+ Yrs Exp in Multiple Technologies, Diverse Domain Expertise:
+Gowri Shankar is a Researcher and Software Developer in his heart has tremendous enthusiasm to learn new things and seeing them work. His primary areas of expertise are image processing, algorithm development, protocol designing and building robust reusable software components across diverse technologies. He has pioneered in building software products from nothing to release to market stage more than once in his career. Currently pursuing a key role in a technology start-up under stealth.</p>
+    
+  </div>
+  <div class="modal-footer">
+    <div class="pull-left">
+      <div><a href="http://in.linkedin.com/in/gowrishankarin" target="_blank">linkedin</a>      
+        <a style="padding-left:15px" href="https://www.facebook.com/shankar.chari" target="_blank">facebook</a>
+        <a style="padding-left:15px" href="https://twitter.com/gowrishankarin" target="_blank">twitter</a></div>
+    </div>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+
+<div id="about-this" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <img src="./home/img/gary.jpeg" class="bg_img" alt="Smiley face"></img>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="myModalLabel">About this Design Prototype</h4>
+  </div>
+  <div class="modal-body">
+    
+    <p>This design prototype is developed while taking <span style="color:#0088cc">Humar Computer Interaction</span> course by <span style="color:#0088cc">Prof. Scott Klemmer</span> from <span style="color:#0088cc">Stanford University</span> in <span style="color:#0088cc">Coursera Platform.</span> The design and development is completely done by Gowri Shankar over a period of 6 weeks during the summer of 2013. There are no coyprights, no licenses of any kind involved. You can use this design, code in your projects. If you like this design, just send a note to me, I have updated my contact detail below. <span style="color:#0088cc">Gowri Shankar</span></p>
+    
+  </div>
+  <div class="modal-footer">
+    <div class="pull-left">
+      <div><a href="http://in.linkedin.com/in/gowrishankarin" target="_blank">linkedin</a>      
+        <a style="padding-left:15px" href="https://www.facebook.com/shankar.chari" target="_blank">facebook</a>
+        <a style="padding-left:15px" href="https://twitter.com/gowrishankarin" target="_blank">twitter</a></div>
+    </div>
+  </div>
+</div>
+
+
+<div id="color-codes" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="myModalLabel">Quiz Status Color Codes Explained</h4>
+  </div>
+  <div class="modal-body">
+    <p><button class="btn btn-success">Quiz Completed</button></p>
+    <p><button class="btn btn-primary">Yet to attempt this quiz</button></p>
+    <p><button class="btn btn-warning">Deadline Approaching</button></p>
+    <p><button class="btn btn-inverse">Failed to attempt the quiz</button></p>
+    <p><button class="btn btn-info">Quiz not yet opened</button></p>
+    <p><button class="btn btn-danger">Failed to pass</button></p>
+  </div>
+
+</div>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="https://www.coursera.org" target="_blank">COURSERA</a>
+          <div class="nav-collapse collapse">
+            
+            <ul class="nav">
+              <li class="active"><a href="http://coursera-nxg.herokuapp.com">My Dashboard</a></li>
+              <li style="cursor:pointer" data-toggle="modal" data-target="#about-this"><a>About</a></li>
+              <li><a style="color:#ccc">Browser Support: Chrome, Firefox & Safari</a></li>
+              <li><a style="color:#ccc">Verified On: Mac & Linux</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>  
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+    
+        <div class="span10">
+
+<ul class="nav nav-tabs" id="courses">
+  <li class="active"><a href="#ongoing" data-toggle="tab">
+    <img src="./home/img/run.png" class="tab_img" alt="Smiley face" height="24" width="24">Ongoing Courses</a></li>
+  <li><a href="#enrolled" data-toggle="tab">
+    <img src="./home/img/start.png" class="tab_img" alt="Smiley face" height="24" width="24">Enrolled Courses</a></li>
+  <li><a href="#completed" data-toggle="tab">
+    <img src="./home/img/done.png" class="tab_img" alt="Smiley face" height="24" width="24">Successfully Completed </a></li>
+  <li><a href="#failed" data-toggle="tab">
+    <img src="./home/img/failed.png" class="tab_img" alt="Smiley face" height="24" width="24">Dropped/Failed Courses</a></li>
+</ul>
+
+<div class="tab-content">
+
+<div id="ongoing" class="tab-pane active">
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+                <a href="https://www.coursera.org/instructor/jimfowler" class="instructor" target="_blank">
+                  <img src="./home/img/jim.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Jim Fowler</span></img>
+                </a>
+                <a href="https://class.coursera.org/calc1-001/class/index" class="navbar-link course_name" target="_blank">Calculus One</a>
+              </div>
+              <div class="pull-right">
+                <p>
+                  <a href="https://www.coursera.org/course/calc1" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+                
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+                <div >
+                  <img class="course_icon" src="./home/img/c1.png">
+                </div>
+
+                <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="https://www.coursera.org/osu" target="_blank"><small>The Ohio State Univ</small></a>
+                  <p class=unenroll><a href="https://class.coursera.org" target="_blank"><small>    Un-enroll</small></a>
+                  </p>
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                <div class="quiz">Quizzes<img class="color-code" src="./home/img/help.png" data-toggle="modal" data-target="#color-codes"></div>
+                <div class="duration"><span class="this_week">15</span>/15 Weeks Course</div>
+
+                <div class="quiz_bar"> 
+                  <div class="btn-toolbar">
+                    <div class="btn-group">
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W1</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W2</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W3</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W4</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W5</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W6</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W7</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W8</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W9</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W10</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W11</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W12</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W13</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W14</button>
+                      <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W15</button>
+                    </div>
+                </div>
+              </div>
+
+                <div class="body_info">
+                  <span class="body_info_head">Upcoming Deadlines</span>
+                  <div class="body_info_content">There are no pending work to complete!!!</div>
+                </div>
+              </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+                <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+
+
+            <div class="course_foot">
+              <div class="pull-left">Your current average score is <span class="score">95.63%</span></div>
+              <div class="pull-right">You have completed all quizzes and assignments</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+
+
+  <!-- HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT -->        
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+                <a href="https://www.coursera.org/instructor/jimfowler" class="instructor" target="_blank">
+                  <img src="./home/img/scott.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Klemmer</span></img>
+                </a>
+                <a href="https://class.coursera.org/hci-003/class/index" class="navbar-link course_name" target="_blank">Human Computer Interaction</a>
+              </div>
+              <div class="pull-right">
+                <p>
+                  <a href="https://www.coursera.org/course/hci" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+                
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+                <div>
+                  <img  class="course_icon" src="./home/img/hci.png"></img>
+                </div>
+
+
+                <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="https://www.coursera.org/stanford" target="_blank"><small>Stanford University</small></a>
+                  <p class=unenroll><a href="https://class.coursera.org" target="_blank"><small>    Un-enroll</small></a>
+                  </p>
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                <div class="quiz">Quizzes<img class="color-code" src="./home/img/help.png" data-toggle="modal" data-target="#color-codes"></div>
+                <div class="duration"><span class="this_week">4</span>/9 Weeks Course</div>
+
+                <div class="quiz_bar">
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W1</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W2</button>
+                    <button class="btn btn-mini btn-warning" data-toggle="modal" data-target="#deadlineNearing">W3</button>
+                    <button class="btn btn-mini btn-primary" data-toggle="modal" data-target="#quizOpen">W4</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W5</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W6</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W7</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W8</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W9</button>
+
+                  </div>
+                </div>
+                </div>
+
+                <div class="quiz">Assignments</div>
+                <div class="quiz_bar">
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">A1</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">A2</button>
+                    <button class="btn btn-mini btn-warning" data-toggle="modal" data-target="#deadlineNearing">A3</button>
+                    <button class="btn btn-mini btn-primary" data-toggle="modal" data-target="#quizOpen">A4</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">A5</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">A6</button>
+                  </div>
+                </div>
+                </div>
+
+                <div class="body_info">
+                    <ul class="nav nav-tabs deadlines-tab" id="ongoing-deadlines">
+                    <li class="active"><a href="#Q1" class="small-tab" data-toggle="tab">Q4-
+                      <span class="text-bold">2 more days</span></a></li>
+                    <li><a href="#A1" class="small-tab" data-toggle="tab">A4-
+                      <span class="text-bold">4 more days</span></a></li>
+                    <li><a href="#A2" class="small-tab" data-toggle="tab">A3-
+                      <span class="text-bold">15 more mins</span></a></li>
+                  </ul>
+
+                  <div class="tab-content deadline-content">
+                    <div class="tab-pane active"  id="Q1" >Quiz 3 Deadline</br> You have 
+                      <div data-time="1370087320" class="kkcount-down-1 kkcountdown-position"></div> 
+                      <span class="deadline-info-right-1">to complete!!!</span>
+                      <button class="btn btn-mini btn-primary pull-right">Attempt</button>
+                    </div>
+                    <div class="tab-pane"  id="A1" >Assignment 6 Deadline</br> You have 
+                      <div data-time="1420066800" class="kkcount-down-2 kkcountdown-position"></div> 
+                      <span class="deadline-info-right-2">to complete!!!</span>
+                      <button class="btn btn-mini btn-primary pull-right">Attempt</button>
+                    </div>
+                    <div class="tab-pane"  id="A2" >Assignment 5 Deadline</br> You have 
+                      <div data-time="1420066800" class="kkcount-down-3 kkcountdown-position"></div> 
+                      <span class="deadline-info-right-3">to complete!!!</span>
+                      <button class="btn btn-mini btn-warning pull-right">Attempt</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+                <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+             <div class="course_foot">
+              <div class="pull-left">Your current average score is <span class="score">45.63%</span></div>
+              <div class="pull-right">You have 1 quiz and 1 assignment in due</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+  <!-- HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT -->  
+
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+               
+                <a href="https://www.coursera.org/instructor/~272" class="instructor" target="_blank">
+                  <img src="./home/img/victor.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Victor G</span></img>
+                </a>
+
+                <a href="https://www.coursera.org/instructor/~272" class="instructor" target="_blank">
+                  <img src="./home/img/charles.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Charles C</span></img>
+                </a>
+                <a href="https://class.coursera.org/hci-003/class/index" class="navbar-link course_name" target="_blank">Exploring Quantum Physics</a>
+              
+
+
+              </div>
+              <div class="pull-right">
+                
+                <p>
+                  <a href="https://www.coursera.org/course/eqp" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+                
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+
+                <div >
+                  <img class="course_icon" src="./home/img/eqp.png"></img>
+                </div>
+
+                <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="https://www.coursera.org/umd" target="_blank"><small>University of Maryland</small></a>
+                  <p class=unenroll><a href="https://class.coursera.org" target="_blank"><small>    Un-enroll</small></a>
+                  </p>
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                
+                <div class="quiz">Quizzes<img class="color-code" src="./home/img/help.png" data-toggle="modal" data-target="#color-codes"></div>
+                <div class="duration"><span class="this_week">5</span>/8 Weeks Course</div>
+
+                <div class="quiz_bar">
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-mini btn-danger" data-toggle="modal" data-target="#failedQuiz">W1</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W2</button>
+                    <button class="btn btn-mini btn-danger" data-toggle="modal" data-target="#failedQuiz">W3</button>
+                    <button class="btn btn-mini btn-warning" data-toggle="modal" data-target="#deadlineNearing">W4</button>
+                    <button class="btn btn-mini btn-primary" data-toggle="modal" data-target="#quizOpen">W5</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W6</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W7</button>
+                    <button class="btn btn-mini btn-info" data-toggle="modal" data-target="#quizNotOpen">W8</button>
+                   
+                  </div>
+                </div>
+              </div>
+
+                <div class="body_info">
+                  <ul class="nav nav-tabs deadlines-tab" id="ongoing-deadlines-eqp">
+                    <li class="active"><a href="#Q4" class="small-tab active" data-toggle="tab">Q4 - 
+                      <span class="text-bold"> 15 more minutes</span></a></li>
+                      <li><a href="#Q5" class="small-tab" data-toggle="tab"> Q5 - 
+                      <span class="text-bold"> 4 more days</span></a></li>
+                  </ul>
+
+                  <div class="tab-content deadline-content">
+                     <div class="tab-pane active"  id="Q4" >Quiz 4 Deadline</br> You have 
+                      <div data-time="1420066800" class="kkcount-down-4 kkcountdown-position"></div> 
+                      <span class="deadline-info-right-3">to complete!!!</span>
+                      <button class="btn btn-mini btn-warning pull-right">Attempt</button>
+                    </div>
+
+                    <div class="tab-pane"  id="Q5" >Quiz 5 Deadline</br> You have 
+                      <div data-time="1420066800" class="kkcount-down-5 kkcountdown-position"></div> 
+                      <span class="deadline-info-right-2">to complete!!!</span>
+                      <button class="btn btn-mini btn-primary pull-right">Attempt</button>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+              
+
+     <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+
+          
+              
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+
+
+            <div class="course_foot">
+              <div class="pull-left">Your current average score is <span class="score">1.63%</span></div>
+              <div class="pull-right">Warning!!! You are not doing good in this course</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+</div>
+
+<div id="enrolled" class="tab-pane">
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+              
+                <a href="https://www.coursera.org/instructor/madam" class="instructor" target="_blank">
+                  <img src="./home/img/maya.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Maya Adam</span></img>
+                </a>
+                <a href="https://www.coursera.org/course/childnutrition" class="navbar-link course_name" target="_blank">Child Nutrition and Cooking</a>
+              
+ 
+
+              </div>
+              <div class="pull-right">
+                <p>
+                  <a href="https://www.coursera.org/course/eqp" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+                
+
+
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+
+                 <div>
+                  <img class="course_icon" src="./home/img/cnc.jpg"></img>
+                </div>
+
+                <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="http://online.stanford.edu/" target="_blank"><small>Stanford University</small></a>
+                  <p class=unenroll><a href="https://class.coursera.org" target="_blank"><small>    Un-enroll</small></a>
+                  </p>
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                
+                <div class="duration">5 Week Course</div>
+
+                <div class="body_info">
+                  <span class="body_info_head">About the Course</span>
+                  <div class="body_info_content">Eating patterns that begin in childhood affect health and wellbeing across the lifespan. In the USA, we are in the midst of a childhood obesity epidemic that threatens to leave our children with a shorter life expectancy than their parents. </div>
+                </div>
+              </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+                <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+
+            <div class="course_foot">
+              <div class="pull-right">This course starts tomorrow</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+
+
+  <!-- HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT -->  
+
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+                
+                <a href="https://www.coursera.org/instructor/madam" class="instructor" target="_blank">
+                  <img src="./home/img/nick.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Nick Feam</span></img>
+                </a>
+                <a href="https://www.coursera.org/course/childnutrition" class="navbar-link course_name" target="_blank">Software Defined Networks</a>
+                
+
+
+              </div>
+              <div class="pull-right">
+                <p>
+                  <a href="https://www.coursera.org/course/eqp" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+                
+
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+                
+                <div>
+                  <img class="course_icon" src="./home/img/sdn.png"></img>
+                </div>
+
+                 <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="https://www.coursera.org/gatech" target="_blank"><small>Georgia Institute of Technology</small></a>
+                  <p class=unenroll><a href="https://class.coursera.org" target="_blank"><small>    Un-enroll</small></a>
+                  </p>
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+
+                <div class="duration">5 Week Course</div>
+
+
+
+                <div class="body_info">
+                  <span class="body_info_head">About the Course</span>
+                  <div class="body_info_content">This course introduces software defined networking, an emerging paradigm in computer networking that allows a logically centralized software program to control the behavior of an entire network.  
+
+Separating a network's control logic from the underlying physical routers and switches that forward traffic allows network operators to write high-level control programs that specify the behavior of an entire network, in contrast to conventional networks, whereby network operators must codify functionality in terms of low-level device configuration.   </div>
+                </div>
+              </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+                <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+            <div class="course_foot">
+              <div class="pull-right">This course starts in 3 weeks</div>
+            </div>
+
+
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+
+</div>
+  <!-- HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT -->  
+
+<div id="completed" class="tab-pane">
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+                <a href="https://www.coursera.org/instructor/madam" class="instructor" target="_blank">
+                  <img src="./home/img/keith.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Keith Dev</span></img>
+                </a>
+                <a href="https://www.coursera.org/course/childnutrition" class="navbar-link course_name" target="_blank">Introduction to Mathematical Thinking</a>
+      
+
+
+              </div>
+              <div class="pull-right">
+                <p>
+                  <a href="https://www.coursera.org/course/eqp" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+                
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+
+                 <div>
+                  <img class="course_icon" src="./home/img/imt.png"></img>
+                </div>
+
+                <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="http://online.stanford.edu/" target="_blank"><small>Stanford University</small></a>
+                  
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                <div class="quiz">Quizzes<img class="color-code" src="./home/img/help.png" data-toggle="modal" data-target="#color-codes"></div>
+                <div class="duration">5 Week Course</div>
+
+              <div class="quiz_bar">
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W1</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W2</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W3</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W4</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W5</button>
+          
+                  </div>
+                </div>
+              </div>
+
+                <div class="body_info">
+                  <span class="body_info_head">About the Course</span>
+                  <div class="body_info_content">Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  . School math typically focuses on learning procedures to solve highly stereotyped problems.</div>
+                </div>
+              </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+               <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+
+
+   
+            <div class="course_foot">
+              <div class="pull-left">Your overall score is <span class="score">65.63%</span></div>
+              <div class="pull-right">You have completed this course with distinction</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+
+
+  <!-- HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT -->  
+
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+                <a href="https://www.coursera.org/instructor/madam" class="instructor" target="_blank">
+                  <img src="./home/img/ronen.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Ronen Ple</span></img>
+                </a>
+                <a href="https://www.coursera.org/course/childnutrition" class="navbar-link course_name" target="_blank">Introduction to Astronomy</a>
+
+              </div>
+              <div class="pull-right">
+               <p>
+                  <a href="https://www.coursera.org/course/eqp" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+                
+
+
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+
+                <div>
+                  <img class="course_icon" src="./home/img/ia.png"></img>
+                </div>
+
+                <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="https://www.coursera.org/duke" target="_blank"><small>Duke University</small></a>
+                  
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                <div class="quiz">Quizzes<img class="color-code" src="./home/img/help.png" data-toggle="modal" data-target="#color-codes"></div>
+                <div class="duration">9 Week Course</div>
+
+                <div class="quiz_bar">
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W1</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W2</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W3</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W4</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W5</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W6</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W7</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W8</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W9</button>
+
+                  </div>
+                </div>
+              </div>
+
+                <div class="body_info">
+                  <span class="body_info_head">About the Course</span>
+                  <div class="body_info_content">In this class, we will be studying, quite literally, everything in the universe.  We will start with "classical" astronomy, describing the night sky and organizing what we see as was done in ancient times.  We will then embark on a journey, starting here on Earth and progressing outward, to study the Solar system,</div>
+                </div>
+              </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+                <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+
+            <div class="course_foot">
+              <div class="pull-left">Your overall score is <span class="score">98.63%</span></div>
+              <div class="pull-right">You have completed this course with distinction</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+
+        </div>
+
+  <!-- HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT -->  
+
+<div id="failed" class="tab-pane">
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+                
+                <a href="https://www.coursera.org/instructor/madam" class="instructor" target="_blank">
+                  <img src="./home/img/walter.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Walter Si</span></img>
+                </a>
+
+                <a href="https://www.coursera.org/instructor/madam" class="instructor" target="_blank">
+                  <img src="./home/img/ram.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Ram Neta</span></img>
+                </a>
+                <a href="https://www.coursera.org/course/childnutrition" class="navbar-link course_name" target="_blank">Think Again: How to reason and argue</a>
+
+
+              </div>
+              <div class="pull-right">
+                <p>
+                  <a href="https://www.coursera.org/course/eqp" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+               
+
+
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+                
+                <div>
+                  <img class="course_icon" src="./home/img/tah.png"></img>
+                </div>
+
+               <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="https://www.coursera.org/duke" target="_blank"><small>Duke University</small></a>
+                </div>
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                <div class="quiz">Quizzes<img class="color-code" src="./home/img/help.png" data-toggle="modal" data-target="#color-codes"></div>
+                <div class="duration">15 Weeks Course</div>
+
+                <div class="quiz_bar">
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W1</button>
+                    <button class="btn btn-mini btn-danger" data-toggle="modal" data-target="#failedQuiz">W2</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W3</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W4</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W5</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W6</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W7</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W8</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W9</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W10</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W11</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W12</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W13</button>
+                    <button class="btn btn-mini btn-inverse" data-toggle="modal" data-target="#noAttempt">W14</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W15</button>
+                  </div>
+                </div>
+              </div>
+
+                <div class="body_info">
+                  <span class="body_info_head">About the Course</span>
+                  <div class="body_info_content">Reasoning is important.  This course will teach you how to do it well.  You will learn some simple but vital rules to follow in thinking about any topic at all and some common and tempting mistakes to avoid in reasoning.  We will discuss how to identify, analyze, and evaluate arguments by other people (including politicians, used car salesmen, and teachers)</div>
+                </div>
+                </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+                <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+
+            <div class="course_foot">
+              <div class="pull-left">Your overall score is <span class="score">5.63%</span></div>
+              <div class="pull-right">You did not earn a statement of accomplishment</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+
+
+  <!-- HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT HERO UNIT -->  
+
+
+          <div class="hero-unit">
+            <table class="table"> 
+
+            <tr class="header">
+              <div class="pull-left">
+                <a href="https://www.coursera.org/instructor/madam" class="instructor" target="_blank">
+                  <img src="./home/img/robert.jpg" class="instructor_face" alt="Smiley face" height="24" width="24"><span class="instructor_name">Robert G</span></img>
+                </a>
+                <a href="https://www.coursera.org/course/childnutrition" class="navbar-link course_name" target="_blank">Calculus: Single Variable</a>
+
+              </div>
+              <div class="pull-right">
+                <p>
+                  <a href="https://www.coursera.org/course/eqp" class="course_info" target="_blank">
+                    <small>
+                      <strong>Course Info</strong>
+                    </small>
+                  </a>
+                </p>
+               
+                
+
+              </div>
+            </tr>
+
+
+<!-- BODY -->
+
+            <tr>
+
+<!-- RIGHT -->              
+              <td>
+
+                <div>
+                  <img  class="course_icon" src="./home/img/csv.jpg"></img>
+                </div>
+
+                <div class="date_school">  
+                  <div>Start: <span class="date">Jan 7th 2013</span></div>
+                  <div>End: <span class="date">Apr 22nd 2013</span></div>
+                  <a href="https://www.coursera.org/penn" target="_blank"><small>University of Pensylvania</small></a>
+                </div>
+
+              </td>
+<!-- RIGHT -->
+<!-- BODY -->
+              <td>
+                <div  class="course_body">
+                <div class="quiz">Quizzes<img class="color-code" src="./home/img/help.png" data-toggle="modal" data-target="#color-codes"></div>
+                <div class="duration">10 Week Course</div>
+
+                <div class="quiz_bar">
+
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W1</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W2</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W3</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W4</button>
+                    <button class="btn btn-mini btn-danger" data-toggle="modal" data-target="#failedQuiz">W5</button>
+                    <button class="btn btn-mini btn-danger" data-toggle="modal" data-target="#failedQuiz">W6</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W7</button>
+                    <button class="btn btn-mini btn-danger" data-toggle="modal" data-target="#failedQuiz">W8</button>
+                    <button class="btn btn-mini btn-danger" data-toggle="modal" data-target="#failedQuiz">W9</button>
+                    <button class="btn btn-mini btn-success" data-toggle="modal" data-target="#myModal">W10</button>
+
+                  </div>
+                </div>
+              </div>
+
+                <div class="body_info">
+                  <span class="body_info_head">About the Course</span>
+                  <div class="body_info_content">Calculus is one of the grandest achievements of human thought, explaining everything from planetary orbits to the optimal size of a city to the periodicity of a heartbeat. This brisk course covers the core ideas of single-variable Calculus with emphases on conceptual understanding and applications. </div>
+                </div>
+                </div>
+              </td>
+
+<!-- BODY -->
+
+<!-- LEFT -->
+              <td>
+                <div class="notifications">
+                  <div style="float:right"><span style="color:crimson">6</span> New Notifications</div>
+
+                  <div class="message_container" >
+
+                    <div class="notify" style="margin-top:3px">
+                      <img src="./home/img/scott.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Scott: </span>I’ve enjoyed seeing the ways in which you have been connecting with your classmates both online and in person.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/jim.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Jim: </span>Mathematical thinking is not the same as doing mathematics – at least not as mathematics is typically presented  .</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/gary.jpeg" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane"  data-toggle="modal" data-target="#forum"><span class="notifier_name"> Gary: </span>I think its less than 24 hours... am not sure whether it is possible to do a good job in Assignment 5.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/rosa.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Rosa: </span>This week is going to be a crazy week, quite a lot of work.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/maria.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Maria: </span>Someone please tell the professor to extend the deadline.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/julie.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>3rd week first lecture was really mind blowing I watched and explain it to my 3 months old.</div>
+                    </div>
+
+                    <div class="notify">
+                      <img src="./home/img/victor.png" data-toggle="modal" data-target="#notification" class="notifier_face" alt="Smiley face"></img>
+                      <div class="notification-pane" data-toggle="modal" data-target="#forum"><span class="notifier_name"> Julie: </span>Mommy!! You explained me really well, I will take the course when it offered next time.</div>
+                    </div>
+
+           
+
+                </div>
+              </div>
+              
+              </td>
+
+<!-- LEFT -->
+
+            </tr>
+</table>
+
+          
+<!-- FOOT -->
+            <div class="course_foot">
+              <div class="pull-left">Your overall score is <span class="score">45.63%</span></div>
+              <div class="pull-right">You did not earn a statement of accomplishment</div>
+            </div>
+
+          
+<!-- FOOT -->
+
+    
+          </div>
+
+</div>
+
+</div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>© Coursera Dashboard by Gowri Shankar 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./dashboard/jquery.js"></script>
+    <script src="./dashboard/bootstrap-transition.js"></script>
+    <script src="./dashboard/bootstrap-alert.js"></script>
+    <script src="./dashboard/bootstrap-modal.js"></script>
+    <script src="./dashboard/bootstrap-dropdown.js"></script>
+    <script src="./dashboard/bootstrap-scrollspy.js"></script>
+    <script src="./dashboard/bootstrap-tab.js"></script>
+    <script src="./dashboard/bootstrap-tooltip.js"></script>
+    <script src="./dashboard/bootstrap-popover.js"></script>
+    <script src="./dashboard/bootstrap-button.js"></script>
+    <script src="./dashboard/bootstrap-collapse.js"></script>
+    <script src="./dashboard/bootstrap-carousel.js"></script>
+    <script src="./dashboard/bootstrap-typeahead.js"></script>
+
+        <script src="./home/js/kkcountdown.js" type="text/javascript"></script>
+
+    <script type="./bootstrap/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+      $("#ongoing").ready(function(){
+
+      $(".kkcount-down-1").attr("data-time", Math.floor(new Date() / 1000)+172800);
+      $(".kkcount-down-2").attr("data-time", Math.floor(new Date() / 1000)+343600);
+      $(".kkcount-down-3").attr("data-time", Math.floor(new Date() / 1000)+15*60);
+      $(".kkcount-down-4").attr("data-time", Math.floor(new Date() / 1000)+15*60);
+      $(".kkcount-down-5").attr("data-time", Math.floor(new Date() / 1000)+343600);
+          $(".kkcount-down-1").kkcountdown({
+            dayText   : 'day ',
+            daysText  : 'days ',
+              hoursText : 'h ',
+              minutesText : 'm ',
+              secondsText : 's',
+              displayZeroDays : false,
+              callback  : test,
+              oneDayClass : 'one-day'
+          });
+          $(".kkcount-down-2").kkcountdown({
+            dayText   : 'day ',
+            daysText  : 'days ',
+              hoursText : 'h ',
+              minutesText : 'm ',
+              secondsText : 's',
+              displayZeroDays : false,
+              callback  : test,
+              oneDayClass : 'one-day'
+          });
+          $(".kkcount-down-3").kkcountdown({
+            dayText   : 'day ',
+            daysText  : 'days ',
+              hoursText : 'h ',
+              minutesText : 'm ',
+              secondsText : 's',
+              displayZeroDays : false,
+              callback  : test,
+              oneDayClass : 'one-day'
+          });
+          $(".kkcount-down-4").kkcountdown({
+            dayText   : 'day ',
+            daysText  : 'days ',
+              hoursText : 'h ',
+              minutesText : 'm ',
+              secondsText : 's',
+              displayZeroDays : false,
+              callback  : test,
+              oneDayClass : 'one-day'
+          });
+          $(".kkcount-down-5").kkcountdown({
+            dayText   : 'day ',
+            daysText  : 'days ',
+              hoursText : 'h ',
+              minutesText : 'm ',
+              secondsText : 's',
+              displayZeroDays : false,
+              callback  : test,
+              oneDayClass : 'one-day'
+          });
+          function test(){
+          }
+      });
+    </script>
+  
+
+  
+</body></html>
